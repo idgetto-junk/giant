@@ -26,7 +26,7 @@ function giant_anim
     set_axes;
     for t = start_time:dt:stop_time
         if index < length(T) && t >= T(index)
-            theta1 = Y(index, 1);
+            theta1 = Y(index, 1)
             omega1 = Y(index, 2);
             theta2 = Y(index, 3);
             omega2 = 0;
@@ -36,7 +36,7 @@ function giant_anim
 
             index = index + 1;
         end
-        pause(5 * dt);
+        pause(dt);
     end
 
     max_vel

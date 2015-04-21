@@ -15,8 +15,9 @@ function [T, Y] = giant_ode
     L2 = 1;
     g = 10;
     uk = .6;
+    amplitude = 0.6541;
 
-    initial_conds = [pi/4, 1E-10, pi/4];
+    initial_conds = [-pi/4, 1E-10, -pi/4];
     time_range = [0, 100];
 
     odeset('RelTol', 1E-50);
@@ -40,7 +41,7 @@ function [T, Y] = giant_ode
     end
 
     function res = omega2(theta1, omega1)
-        res = omega1 + 2 * omega1 * (pi / 4) * cos(2 * theta1);
+        res = omega1 + 2 * omega1 * amplitude * cos(2 * theta1);
     end
 
     function res = acceleration1(theta1, theta2, omega1, omega2)

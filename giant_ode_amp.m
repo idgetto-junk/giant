@@ -1,5 +1,8 @@
-function [T, Y, OM2] = giant_ode_body_proportion(prop)
-% GIANT_ODE - calculates the angle and angular velocity of a double pendulum over time
+function [T, Y] = giant_ode_amp(amplitude)
+% GIANT_ODE_AMP - calculates the angle and angular velocity of a double pendulum over time with a given amplitude of leg swing
+%
+% Inputs:
+%   amplitude - the amplitude of the gymnasts leg swing
 %
 % Outputs:
 %    T - a vector of times
@@ -10,7 +13,7 @@ function [T, Y, OM2] = giant_ode_body_proportion(prop)
 % April 2015
 
     m1 = 5;
-    m2 = prop*m1;
+    m2 = 4;
     L1 = 1;
     L2 = 1;
     g = 10;
@@ -40,7 +43,7 @@ function [T, Y, OM2] = giant_ode_body_proportion(prop)
     end
 
     function res = omega2(theta1, omega1)
-        res = omega1 + 2 * omega1 * (pi / 4) * cos(2 * theta1);
+        res = omega1 + 2 * omega1 * amplitude * cos(2 * theta1);
     end
 
     function res = acceleration1(theta1, theta2, omega1, omega2)
@@ -50,10 +53,5 @@ function [T, Y, OM2] = giant_ode_body_proportion(prop)
         res = res - (omega1 / abs(omega1)) * (omega1^2) * uk;
     end
 
-    disp(Y(:,2));
-
-    OM2 = zeros(length(T), 1);
-    for i = 1:length(T)
-        OM2(i) = omega2(Y(i, 2));
-    end
 end
+
