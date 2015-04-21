@@ -5,7 +5,7 @@ function res = body_proportion_crunch(prop)
     res = 1;
     for i = 1:length(T)
         if Y(i) <= -pi
-            res = abs(Omega1(i));
+            res = T(i);
         else
             res = 0;
         end
