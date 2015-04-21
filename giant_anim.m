@@ -7,8 +7,8 @@ function giant_anim
 
     [T, Y] = giant_ode;
 
-    m1 = 1;
-    m2 = .35;
+    m1 = 1/2;
+    m2 = 1/2;
     L1 = 1;
     L2 = 1;
     g = 10;
