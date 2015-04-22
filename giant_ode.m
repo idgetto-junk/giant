@@ -14,10 +14,10 @@ function [T, Y] = giant_ode
     L1 = 1;
     L2 = 1;
     g = 10;
-    uk = .6;
+    uk = .3;
     amplitude = 0.6541;
 
-    initial_conds = [-pi/4, 1E-10, -pi/4];
+    initial_conds = [-pi/2, 1E-10, -pi/2 + amplitude];
     time_range = [0, 100];
 
     odeset('RelTol', 1E-50);

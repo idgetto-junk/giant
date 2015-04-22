@@ -36,7 +36,7 @@ function giant_anim
 
             index = index + 1;
         end
-        pause(dt);
+        pause(10 * dt);
     end
 
     max_vel
