@@ -1,5 +1,5 @@
-function [T, Y] = giant_ode
-% GIANT_ODE - calculates the angle and angular velocity of a double pendulum over time
+function [T, Y] = giant_ode_frictionless
+% GIANT_ODE_FRICTIONLESS - calculates the angle and angular velocity of a double pendulum over time (no friction)
 %
 % Outputs:
 %    T - a vector of times
@@ -14,7 +14,7 @@ function [T, Y] = giant_ode
     L1 = 1;
     L2 = 1;
     g = 10;
-    uk = .3;
+    uk = 0;
     amplitude = 0.6541;
 
     theta0 = -pi;
@@ -34,12 +34,12 @@ function [T, Y] = giant_ode
         theta1 = Y(1);
         omega1 = Y(2); 
         theta2 = Y(3);
-        omega2 = omega2(theta1, omega1);
-        alpha1 = acceleration1(theta1, theta2, omega1, omega2);
+        o2 = omega2(theta1, omega1);
+        alpha1 = acceleration1(theta1, theta2, omega1, o2);
 
         dTheta1 = omega1;
         dOmega1 = alpha1;
-        dTheta2 = omega2;
+        dTheta2 = o2;
 
         D = zeros(3, 1);
         D(1) = dTheta1;
@@ -48,7 +48,7 @@ function [T, Y] = giant_ode
     end
 
     function res = omega2(theta1, omega1)
-        res = omega1 + 2 .* omega1 .* amplitude .* cos(2 * theta1);
+        res = omega1 + 2 .* omega1 .* amplitude .* cos(2 .* theta1);
     end
 
     function res = acceleration1(theta1, theta2, omega1, omega2)
