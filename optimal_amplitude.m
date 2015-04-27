@@ -1,4 +1,4 @@
-function [res, val] = omptimal_amplitude
+function [res, val] = optimal_amplitude
 % OPTIMAL_AMPLITUDE - finds the aplitude of the gymnast's leg swing that allows for him to just perform a full rotation around the bar
 %
 % Outputs:

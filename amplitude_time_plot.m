@@ -11,15 +11,15 @@ function [A, O] = amplitude_omega_plot
     clf 
     hold on;
     plot(A, O, 'LineWidth', 4);
-    xlabel('kick amplitude');
-    ylabel('time (s)')
-    title('time vs. kick amplitude');
+    xlabel('Kick Amplitude (rad)');
+    ylabel('Rotational Period (s)')
+    title('Kick Amplitude vs. Rotational Period');
 
     [time, index] = max(O);
     top_amp = A(index);
     plot(top_amp, time, '.r', 'MarkerSize', 40);
     s = strcat('(', num2str(top_amp), ', ', num2str(time), ')');
-    text(top_amp + 0.02  * top_amp, time + 0.02  * time, s, 'FontSize', 14);
+    %text(top_amp + 0.02  * top_amp, time + 0.02  * time, s, 'FontSize', 14);
 
     m = min(O)
     
