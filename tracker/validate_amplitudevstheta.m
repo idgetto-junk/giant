@@ -1,4 +1,4 @@
-function res = validate
+function res = validate_amplitudevstheta
     % TURN THIS INTO AMPLITUDE VS. THETA AND TOTAL ENERGY VS. THETA
     clf;
     hold on;
@@ -30,14 +30,16 @@ function res = validate
         theta_vs_te(i,:) = [Theta1(i), TE(i)];
     end
     plotTo = 70; %(max = 169)
-    plot(theta_vs_te(1:plotTo,1),theta_vs_te(1:plotTo, 2));
+    amplitudevstheta = zeros(plotTo, 2);
+    for i = 1:plotTo
+        amplitudevstheta(i, :) = [Theta1(i), Amplitude(i)];
+    end
+    sorted = sortrows(amplitudevstheta,1);
+    disp(sorted);
+    plot(sorted(:, 1), sorted(:, 2));
     xlabel('Theta (rad)');
-    ylabel('Total Energy (joules)');
-    title('Total Energy vs. Theta');
-    %plot(Theta1, 'r');
-    %plot(Theta2,  'g');
-   % plot(Amplitude, 'b');
-  %  plot(Amplitude);
+    ylabel('Kicking Amplitude (rad)');
+    title('Kicking Amplitude vs. Theta');
     period = 3.04-0.968;
     disp(length(T));
 end

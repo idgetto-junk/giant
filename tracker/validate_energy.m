@@ -1,5 +1,6 @@
-function res = validate
-    % TURN THIS INTO AMPLITUDE VS. THETA AND TOTAL ENERGY VS. THETA
+function res = validate_energy
+    % manipulate variable plotTo to show how much data gets shown (i.e.
+    % how many revolutions
     clf;
     hold on;
     load knee2.csv;
