@@ -25,6 +25,7 @@ function res = validate_energy
         Vy_knee(i) = (kneeY(i+1)-kneeY(i))/dt;
         Vx_torso(i) = (torsoX(i+1)-torsoX(i))/dt;
         Vy_torso(i) = (torsoY(i+1)-torsoY(i))/dt;
+        Speed_torso(i) = sqrt(Vx_torso(i)^2 + Vy_torso(i)^2);
         KE(i) = .5 * m_knee * (Vx_knee(i)^2 + Vy_knee(i)^2) + .5 * m_torso * (Vx_torso(i)^2 + Vy_torso(i)^2);
         PE(i) = m_knee*g*kneeY(i) + m_torso*g*torsoY(i);
         TE(i) = KE(i)+PE(i);
@@ -40,5 +41,6 @@ function res = validate_energy
    % plot(Amplitude, 'b');
   %  plot(Amplitude);
     period = 3.04-0.968;
-    disp(length(T));
+    disp(Speed_torso);
+    
 end
