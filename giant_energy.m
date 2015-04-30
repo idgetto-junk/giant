@@ -10,13 +10,14 @@ function [T, E, Theta] = giant_energy
 % April 2015
     
     % constants
-    m1 = 1;
-    m2 = 0.65;
-    l1 = 1;
-    l2 = 1;
+    constants = default_params;
+    m1 = constants('m1');
+    m2 = constants('m2');
+    l1 = constants('l1');
+    l2 = constants('l2');
     g = 9.8;
 
-    [T, M] = giant_ode;
+    [T, M] = giant_ode_defaults;
 
     T1 = M(:, 1); % vector of theta1
     T2 = M(:, 3); % vector of theta2

@@ -1,10 +1,11 @@
-function [A, O] = amplitude_omega_plot
+function [A, O] = amplitude_time_plot
 
 
-    A = linspace(0, pi/2, 10);
+    A = linspace(0, pi/2, 10000);
 
     O = zeros(length(A), 1); 
     for index = 1:length(A)
+        index
         O(index) = amplitude_time(A(index));
     end
 
@@ -30,30 +31,21 @@ function [A, O] = amplitude_omega_plot
 
     function res = top_index(M)
         res = -1;
-        if M(end, 1) > -pi
+        if M(end, 1) < pi
             res = -1;
             return;
         end
         for i = 1:length(M)
-            if M(i, 1) <= -pi
+            if M(i, 1) >= pi
                 res = i;
             end
         end
     end
 
-    function omega = top_omega(M)
-       ti = top_index(M);
-       if ti == -1
-           omega = -Inf;
-       else
-           omega = abs(M(ti, 2));
-       end
-    end
-
     function time = top_time(T, M)
        ti = top_index(M);
        if ti == -1
-           time = -Inf;
+           time = Inf;
        else
            time = T(ti);
        end
