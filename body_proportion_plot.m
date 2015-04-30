@@ -5,8 +5,8 @@ function body_proportion_plot()
     clf;
     hold on;
     for i=propmin:propstep:propmax
-        omega_final = body_proportion_crunch(i);
-        plot(i, omega_final, 'r.')
+        total_time = body_proportion_crunch(i);
+        plot(i, total_time, 'r.')
     end
     title('Mass Proportion vs. Time to Complete One Revolution');
     xlabel('Mass Proportion');

@@ -1,4 +1,4 @@
-function [T, Y] = giant_ode()
+function [T, Y] = giant_ode_phase(phase_shift)
 % GIANT_ODE - calculates the angle and angular velocity of a double pendulum over time
 %
 % Outputs:
@@ -48,7 +48,7 @@ function [T, Y] = giant_ode()
     end
 
     function res = omega2(theta1, omega1)
-        res = omega1 + 2 .* omega1 .* amplitude .* cos(2 * theta1);
+        res = omega1 + 2 .* omega1 .* amplitude .* cos(2 * theta1 + phase_shift);
     end
 
     function res = acceleration1(theta1, theta2, omega1, omega2)
