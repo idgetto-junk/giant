@@ -23,7 +23,7 @@ function [T, Y] = giant_ode_frictionless
 
     options = odeset('RelTol', 1E-50, 'Events', @top_of_circle);
     [T, Y] = ode45(@pendulum_derivs, time_range, initial_conds, options); 
-    theta_final = Y(end, 1)
+    Y(end, 1)
 
     % append omega2's
     T1 = Y(:, 1);
