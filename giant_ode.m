@@ -1,4 +1,4 @@
-function [T, Y] = giant_ode
+function [T, Y] = giant_ode(params)
 % GIANT_ODE - calculates the angle and angular velocity of a double pendulum over time
 %
 % Outputs:
@@ -9,13 +9,15 @@ function [T, Y] = giant_ode
 % email address: isaac.getto@students.olin.edu
 % April 2015
 
-    m1 = 1;
-    m2 = 1;
-    L1 = 1;
-    L2 = 1;
-    g = 10;
-    uk = .3;
-    amplitude = 0.6541;
+    params = merge_defaults(params);
+
+    m1 = params('m1');
+    m2 = params('m2');
+    L1 = params('l1');
+    L2 = params('l2');
+    g = 9.8;
+    uk = params('uk');
+    amplitude = params('amp');
 
     theta0 = -pi;
     initial_conds = [theta0, 1, theta0 + amplitude];
@@ -63,6 +65,18 @@ function [T, Y] = giant_ode
         denom = L1 * (2 * m1 + m2 - m2 * cos(2 * theta1 - 2 * theta2));
         res = numer / denom;
         res = res - (omega1 / abs(omega1)) * (omega1^2) * uk;
+    end
+
+    function res = merge_defaults(params)
+        defaults = default_params;
+        provided_keys = keys(params);
+
+        for index = 1:length(provided_keys)
+            key = provided_keys{index};
+            defaults(key) = params(key);
+        end
+
+        res = defaults;
     end
 
 end
