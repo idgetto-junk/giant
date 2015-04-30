@@ -1,17 +1,16 @@
-function giant_anim
+
+function giant_animate(T, Y, params)
 % GIANT_ANIM - animation of the giant skill
 %
 % Author: Isaac Getto
 % email address: isaac.getto@students.olin.edu
 % April 2015
 
-    defaults = default_params;
-    [T, Y] = giant_ode(defaults);
-
-    m1 = defaults('m1');
-    m2 = defaults('m2');
-    L1 = defaults('l1');
-    L2 = defaults('l2');
+    params = merge_defaults(params);
+    m1 = params('m1');
+    m2 = params('m2');
+    L1 = params('l1');
+    L2 = params('l2');
     g = 9.8;
     O = [0, 0]; % origin position
 
@@ -26,6 +25,7 @@ function giant_anim
     clf;
     set_axes;
     for t = start_time:dt:stop_time
+        t
         if index < length(T) && t >= T(index)
             theta1 = Y(index, 1)
             omega1 = Y(index, 2);
@@ -38,7 +38,7 @@ function giant_anim
             index = index + 1;
             index
         end
-        pause(10 * dt);
+        pause(2 * dt);
     end
 
     max_vel

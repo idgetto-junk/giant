@@ -30,15 +30,15 @@ function [res, val] = optimal_amplitude
     end
 
     function res = top_index(M)
-        if M(end, 1) > -pi
+        if M(end, 1) < pi
             res = -1;
             return;
         end
 
         res = -1;
-        for i = 1:length(M)
-            if M(i, 1) <= -pi
-                res = i;
+        for index = 1:length(M)
+            if M(index, 1) >= pi
+                res = index;
             end
         end
     end

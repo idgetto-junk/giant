@@ -18,13 +18,20 @@ function [T, Y] = giant_ode(params)
     g = 9.8;
     uk = params('uk');
     amplitude = params('amp');
+    phase_shift = params('phase');
+    frequency = params('frequency');
 
-    theta0 = -pi;
+    theta0 = params('theta0');
     initial_conds = [theta0, 1, theta0 + amplitude];
     time_range = [0, 100];
 
     options = odeset('RelTol', 1E-50, 'Events', @top_of_circle);
     [T, Y] = ode45(@pendulum_derivs, time_range, initial_conds, options); 
+
+    if params('anim')
+        figure
+        giant_animate(T, Y, params);
+    end
 
     % append omega2's
     T1 = Y(:, 1);
@@ -34,9 +41,13 @@ function [T, Y] = giant_ode(params)
 
     function [value, isterminal, direction] = top_of_circle(t, Y)
         theta1 = Y(1);
-        value = theta1 - pi;
+        if theta1 >= pi
+            value = 0;
+        else
+            value = theta1 - pi;
+        end
         isterminal = 1;
-        direction = 0;
+        direction = 1;
     end
 
     function D = pendulum_derivs(t, Y)
@@ -57,7 +68,7 @@ function [T, Y] = giant_ode(params)
     end
 
     function res = omega2(theta1, omega1)
-        res = omega1 + 2 .* omega1 .* amplitude .* cos(2 * theta1);
+        res = omega1 + frequency .* omega1 .* amplitude .* cos(frequency * theta1 + phase_shift);
     end
 
     function res = acceleration1(theta1, theta2, omega1, omega2)
@@ -65,18 +76,6 @@ function [T, Y] = giant_ode(params)
         denom = L1 * (2 * m1 + m2 - m2 * cos(2 * theta1 - 2 * theta2));
         res = numer / denom;
         res = res - (omega1 / abs(omega1)) * (omega1^2) * uk;
-    end
-
-    function res = merge_defaults(params)
-        defaults = default_params;
-        provided_keys = keys(params);
-
-        for index = 1:length(provided_keys)
-            key = provided_keys{index};
-            defaults(key) = params(key);
-        end
-
-        res = defaults;
     end
 
 end

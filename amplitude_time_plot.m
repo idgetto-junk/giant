@@ -1,7 +1,7 @@
 function [A, O] = amplitude_time_plot
 
 
-    A = linspace(0, pi/2, 10000);
+    A = linspace(0, pi/2, 200);
 
     O = zeros(length(A), 1); 
     for index = 1:length(A)
@@ -34,11 +34,8 @@ function [A, O] = amplitude_time_plot
         if M(end, 1) < pi
             res = -1;
             return;
-        end
-        for i = 1:length(M)
-            if M(i, 1) >= pi
-                res = i;
-            end
+        else
+            res = length(M);
         end
     end
 
