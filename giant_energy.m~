@@ -16,7 +16,7 @@ function [T, E, Theta] = giant_energy
     l2 = 1;
     g = 9.8;
 
-    [T, M] = giant_ode;
+    [T, M] = giant_ode_frictionless;
 
     T1 = M(:, 1); % vector of theta1
     T2 = M(:, 3); % vector of theta2

@@ -1,22 +1,13 @@
-function [T, E, Theta] = giant_energy
-% GIANT_ENERGY - calculate the energy stocks of the giant system
-%
-% Outputs:
-%    T - time vector
-%    E - matrix of PE, KE, and TE
-%
-% Author: Isaac Getto
-% email address: isaac.getto@students.olin.edu
-% April 2015
-    
+function [T, E] = giant_energy_amp(amp)
+
     % constants
-    m1 = 1;
-    m2 = 0.65;
+    m1 = 35;
+    m2 = 35;
     l1 = 1;
     l2 = 1;
     g = 9.8;
 
-    [T, M] = giant_ode;
+    [T, M] = giant_ode_frictionless_amp(amp);
 
     T1 = M(:, 1); % vector of theta1
     T2 = M(:, 3); % vector of theta2
@@ -29,9 +20,11 @@ function [T, E, Theta] = giant_energy
     IE = TE(1) * ones(length(TE), 1); % initial energy
     GE = TE - IE; % gymnast's input energy
 
-    E = [PE, KE, TE, IE, GE];
+    if T1(end) ~= pi
+        GE = -10 * ones(length(GE), 1);
+    end
 
-    Theta = T1;
+    E = [PE, KE, TE, IE, GE];
 
     function pe = potential_energy(theta1, theta2)
         pe = potential_energy1(theta1) + potential_energy2(theta1, theta2);

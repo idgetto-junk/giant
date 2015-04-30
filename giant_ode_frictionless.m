@@ -21,14 +21,22 @@ function [T, Y] = giant_ode_frictionless
     initial_conds = [theta0, 1, theta0 + amplitude];
     time_range = [0, 100];
 
-    odeset('RelTol', 1E-50);
-    [T, Y] = ode45(@pendulum_derivs, time_range, initial_conds); 
+    options = odeset('RelTol', 1E-50, 'Events', @top_of_circle);
+    [T, Y] = ode45(@pendulum_derivs, time_range, initial_conds, options); 
+    theta_final = Y(end, 1)
 
     % append omega2's
     T1 = Y(:, 1);
     O1 = Y(:, 3);
     O2 = omega2(T1, O1);
     Y = [Y, O2];
+
+    function [value, isterminal, direction] = top_of_circle(t, Y)
+        theta1 = Y(1);
+        value = theta1 - pi;
+        isterminal = 1;
+        direction = 0;
+    end
 
     function D = pendulum_derivs(t, Y)
         theta1 = Y(1);
