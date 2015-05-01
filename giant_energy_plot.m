@@ -18,9 +18,9 @@ function giant_energy_plot
     plot(Theta, TE, 'k', 'LineWidth', 3);
     plot(Theta, IE, '--k', 'LineWidth', 3);
 
-    xlabel('time (s)');
+    xlabel('theta (rad)');
     ylabel('energy (J)');
-    title('Energy vs. Time');
+    title('Energy vs. Theta');
     legend('Potential Energy', 'Kinetic Energy', 'Total Energy');
 
     xlim([0, 2.5]);
