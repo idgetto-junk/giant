@@ -8,7 +8,7 @@ function cor_amp_time_plot
     [minNum, minIndex] = min(C(:));
     [row, col] = ind2sub(size(C), minIndex);
 
-    plot(row, col, 'r.', 'MarkerSize', 40);
+    plot(X(row), Y(col), 'r.', 'MarkerSize', 40);
 
     xlabel('Center of Rotation (rads)');
     ylabel('Amplitude (rads)');
