@@ -17,7 +17,7 @@ function friction_time_plot
     end
 
     clf;
-    plot(F, smooth(Time, 10), 'LineWidth', 4);
+    plot(F, Time, 'LineWidth', 4);
     %plot(2.169);
     
     title('Coefficient of Friction vs. Rotational Period');
