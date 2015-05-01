@@ -10,17 +10,20 @@ function giant_energy_plot
     KE = E(:, 2);
     TE = E(:, 3);
     IE = E(:, 4);
-    GE = E(:, 5);
 
     clf;
     hold on;
-    plot(Theta, PE, '-bs', 'LineWidth', 3);
-    plot(Theta, KE, '-ro', 'LineWidth', 3);
-    plot(Theta, TE, 'k', 'LineWidth', 3);
-    plot(Theta, IE, '--k', 'LineWidth', 3);
-    plot(Theta, GE, 'g', 'LineWidth', 3);
+    plot(T, PE, '-bs', 'LineWidth', 3);
+    plot(T, KE, '-ro', 'LineWidth', 3);
+    plot(T, TE, 'k', 'LineWidth', 3);
+    plot(T, IE, '--k', 'LineWidth', 3);
 
-    % xlim([0, 0.85]);
+    xlabel('time (s)');
+    ylabel('energy (J)');
+    title('Energy vs. Time');
+    legend('Potential Energy', 'Kinetic Energy', 'Total Energy');
+
+    xlim([0, 2.5]);
 
 
 end

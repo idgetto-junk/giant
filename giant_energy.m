@@ -11,7 +11,6 @@ function [T, E, Theta] = giant_energy
     
     % constants
     constants = default_params;
-    constants('anim') = 1;
     m1 = constants('m1');
     m2 = constants('m2');
     l1 = constants('l1');
