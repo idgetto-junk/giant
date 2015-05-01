@@ -3,7 +3,7 @@ function [A, O] = amplitude_height_plot
     defaults = default_params;
     l1 = defaults('l1');
 
-    A = linspace(0, pi/2, 1000);
+    A = linspace(0, pi/2, 400);
 
     O = zeros(length(A), 1); 
     for index = 1:length(A)
