@@ -18,12 +18,12 @@ function giant_energy_plot
     plot(Theta, TE, 'k', 'LineWidth', 3);
     plot(Theta, IE, '--k', 'LineWidth', 3);
 
-    xlabel('theta (rad)');
-    ylabel('energy (J)');
-    title('Energy vs. Theta');
+    xlabel('\theta_1 (rad)');
+    ylabel('Energy (J)');
+    title('Energy vs. \theta_1');
     legend('Potential Energy', 'Kinetic Energy', 'Total Energy');
 
-    xlim([0, 2.5]);
+    xlim([-pi, pi]);
 
 
 end
