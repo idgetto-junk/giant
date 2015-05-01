@@ -22,7 +22,8 @@ function [T, Y] = giant_ode(params)
     frequency = params('frequency');
 
     theta0 = params('theta0');
-    initial_conds = [theta0, 1, theta0 + amplitude];
+    center_of_rotation = params('center_of_rotation');
+    initial_conds = [theta0, 1, theta0 + center_of_rotation];
     time_range = [0, 100];
 
     options = odeset('RelTol', 1E-50, 'Events', @top_of_circle);
