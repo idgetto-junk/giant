@@ -1,6 +1,6 @@
 function phase_time_plot
 
-    P = linspace(-pi/2, pi/2, 100);
+    P = linspace(-1, 0.5, 100);
     for index = 1:length(P)
         [T, Y] = giant_ode_phase(P(index));
         
