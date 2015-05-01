@@ -13,10 +13,10 @@ function giant_energy_plot
 
     clf;
     hold on;
-    plot(T, PE, '-bs', 'LineWidth', 3);
-    plot(T, KE, '-ro', 'LineWidth', 3);
-    plot(T, TE, 'k', 'LineWidth', 3);
-    plot(T, IE, '--k', 'LineWidth', 3);
+    plot(Theta, PE, '-bs', 'LineWidth', 3);
+    plot(Theta, KE, '-ro', 'LineWidth', 3);
+    plot(Theta, TE, 'k', 'LineWidth', 3);
+    plot(Theta, IE, '--k', 'LineWidth', 3);
 
     xlabel('time (s)');
     ylabel('energy (J)');
