@@ -9,14 +9,14 @@ function energy_vs_theta
     Potential_Energy = Potential_Energy(LIM);
     Total_Energy = Y2(:, 7);
     Total_Energy = Total_Energy(LIM)
+    %Total_Energy = sgolayfilt(Total_Energy, 3, 61);
     Time = T;
     Time = T(LIM);
     Theta = Y1(:,1);
     Theta = Y1(LIM);
     plot(Theta, Total_Energy, 'r');
-    plot(Theta, Kinetic_Energy, 'g');
-    plot(Theta, Potential_Energy, 'b');
-    ylim([0 1000]);
+    %plot(Theta, Kinetic_Energy, 'g');
+    %plot(Theta, Potential_Energy, 'b');
     disp(Theta);
     title('Kinetic, Potential, and Total Energies vs. Rotation')
     xlabel('\theta_1 (rad)')
