@@ -2,7 +2,7 @@ function friction_time_plot
     clf;
     hold on;
     
-    F = linspace(0, 1.5, 100);
+    F = linspace(0, 1.5, 1000);
     for index = 1:length(F)
         index
         [T, Y] = giant_ode_friction(F(index));

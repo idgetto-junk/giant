@@ -19,26 +19,22 @@ function giant_animate(T, Y, params)
 
     start_time = T(1);
     stop_time  = T(end);
-    dt = 1 / 1000;
+    dt = 1 / 1000000;
     index = 1;
 
     clf;
     set_axes;
-    for t = start_time:dt:stop_time
-        t
-        if index < length(T) && t >= T(index)
-            theta1 = Y(index, 1)
-            omega1 = Y(index, 2);
-            theta2 = Y(index, 3);
-            omega2 = 0;
+    for index = 1:length(T)
+        theta1 = Y(index, 1);
+        omega1 = Y(index, 2);
+        theta2 = Y(index, 3);
+        omega2 = 0;
 
-            draw_frame(theta1, omega1, theta2, omega2);
-            drawnow;
+        draw_frame(theta1, omega1, theta2, omega2);
+        drawnow;
 
-            index = index + 1;
-            index
-        end
-        pause(2 * dt);
+        index = index + 1;
+        %pause(dt);
     end
 
     max_vel

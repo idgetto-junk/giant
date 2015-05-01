@@ -42,13 +42,15 @@ function [T, Y] = giant_ode(params)
 
     function [value, isterminal, direction] = top_of_circle(t, Y)
         theta1 = Y(1);
-        if theta1 >= pi
+        if theta1 < -pi
+            value = 0;
+        elseif theta1 >= pi
             value = 0;
         else
             value = theta1 - pi;
         end
         isterminal = 1;
-        direction = 1;
+        direction = 0;
     end
 
     function D = pendulum_derivs(t, Y)
