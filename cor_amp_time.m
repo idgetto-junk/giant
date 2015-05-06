@@ -1,6 +1,6 @@
 function [X, Y, C] = cor_amp_time
-    COR = linspace(-4, 6, 40);
-    AMP = linspace(0, 4, 40);
+    COR = linspace(-4, 6, 100);
+    AMP = linspace(1, 3.5, 100);
 
     C = zeros(size(COR, 1), size(COR, 2));
     for row = 1:length(COR)
