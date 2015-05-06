@@ -12,6 +12,6 @@ function res = defaults_params
     l2 = total_height * l2_prop;
 
     keys = {'m1', 'm2', 'l1', 'l2', 'uk', 'amp', 'theta0', 'phase', 'frequency',  'center_of_rotation', 'anim'};
-    vals = {m1, m2, l1, l2, 1, .57, -pi, 0, 2, .57, 0};
+    vals = {m1, m2, l1, l2, 0.1595e-3, .57, -pi, 0.2438e-3, 2, 0.2769e-3, 0};
     res = containers.Map(keys, vals);
 end

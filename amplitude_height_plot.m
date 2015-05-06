@@ -3,7 +3,7 @@ function [A, O] = amplitude_height_plot
     defaults = default_params;
     l1 = defaults('l1');
 
-    A = linspace(0, pi/2, 400);
+    A = linspace(0, 0.7, 500);
 
     O = zeros(length(A), 1); 
     for index = 1:length(A)
@@ -21,7 +21,7 @@ function [A, O] = amplitude_height_plot
     max(O)
 
     function h = amplitude_height(amplitude)
-        [T, M] = giant_ode(containers.Map({'amp', 'center_of_rotation'}, {amplitude, amplitude}));
+        [T, M] = giant_ode(containers.Map({'amp'}, {amplitude}));
         h = height(M(:, 1));
     end
 
