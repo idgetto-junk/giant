@@ -4,7 +4,7 @@ function friction_visual_validation
     hold on;
     
     [T_real Y1_real Y2_real] = validate();
-    [T_model Y_model] = giant_ode_friction(1);
+    [T_model Y_model] = giant_ode(containers.Map())
     
     theta_real = Y1_real(:, 1);
     theta_model = Y_model(:, 1);

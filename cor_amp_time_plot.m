@@ -12,4 +12,5 @@ function cor_amp_time_plot
 
     xlabel('Center of Rotation (rads)');
     ylabel('Amplitude (rads)');
+    colorbar;
 end

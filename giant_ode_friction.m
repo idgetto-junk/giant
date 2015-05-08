@@ -11,9 +11,5 @@ function [T, Y] = giant_ode_friction(uk)
 % Author: Isaac Getto
 % email address: isaac.getto@students.olin.edu
 % April 2015
-    m1 = 27.02;
-    m2 = 22.88;
-    L1 = 1.549 * 40.25;
-    L2 = 1.549 - L1;
-    [T, Y] = giant_ode(containers.Map({'uk', 'm1', 'm2', 'L1', 'L2', 'amp', 'center_of_rotation'} , {uk, m1, m2, L1, L2, .6071, .5589} ));
+    [T, Y] = giant_ode(containers.Map({'uk'} , {uk} ));
 end

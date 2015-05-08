@@ -24,7 +24,7 @@ function [T, Y] = giant_ode(params)
     theta0 = params('theta0');
     center_of_rotation = params('center_of_rotation');
     initial_conds = [theta0, 1, theta0 + center_of_rotation];
-    time_range = [0, 100];
+    time_range = [0, 3];
 
     options = odeset('RelTol', 1E-50, 'Events', @top_of_circle);
     [T, Y] = ode45(@pendulum_derivs, time_range, initial_conds, options); 
@@ -78,7 +78,14 @@ function [T, Y] = giant_ode(params)
         numer = - g * (2 * m1 + m2) * sin(theta1) - m2 * g * sin(theta1 - 2 * theta2) - 2 * sin(theta1 - theta2) * m2 * (omega2^2 + omega1^2 * L1 * cos(theta1 - theta2)); 
         denom = L1 * (2 * m1 + m2 - m2 * cos(2 * theta1 - 2 * theta2));
         res = numer / denom;
-        res = res - (omega1 / abs(omega1)) * (omega1^2) * uk;
+        res = res - friction(omega1);% (omega1 / abs(omega1)) * (omega1^2) * uk;
+    end
+
+    function res = friction(omega2)
+        r = L1 + 0.5 * L2;
+        v = omega2 * r;
+        fc = (m1 + m2) * v^2 / r;
+        res = fc * uk;
     end
 
 end
